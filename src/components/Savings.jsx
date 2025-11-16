@@ -1,4 +1,27 @@
+import { useEffect, useState } from "react";
+import { motion, useAnimation } from "framer-motion";
+
+function CountUp({ to, duration = 1.2, suffix = "" }) {
+  const [val, setVal] = useState(0);
+  useEffect(() => {
+    let start;
+    const from = 0;
+    const raf = (t) => {
+      if (!start) start = t;
+      const p = Math.min((t - start) / (duration * 1000), 1);
+      const v = Math.floor(from + (to - from) * p);
+      setVal(v);
+      if (p < 1) requestAnimationFrame(raf);
+    };
+    const id = requestAnimationFrame(raf);
+    return () => cancelAnimationFrame(id);
+  }, [to, duration]);
+  return <span>{val}{suffix}</span>;
+}
+
 export default function Savings() {
+  const controls = useAnimation();
+
   return (
     <section id="savings" className="py-20 bg-slate-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -16,22 +39,22 @@ export default function Savings() {
           </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
             <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-xl border p-4 text-center">
-                <div className="text-3xl font-bold text-emerald-600">27%</div>
+              <motion.div whileHover={{ y: -3 }} className="rounded-xl border p-4 text-center">
+                <div className="text-3xl font-bold text-emerald-600"><CountUp to={27} suffix="%" /></div>
                 <div className="text-xs text-slate-500">Lagere kosten</div>
-              </div>
-              <div className="rounded-xl border p-4 text-center">
-                <div className="text-3xl font-bold text-emerald-600">18%</div>
+              </motion.div>
+              <motion.div whileHover={{ y: -3 }} className="rounded-xl border p-4 text-center">
+                <div className="text-3xl font-bold text-emerald-600"><CountUp to={18} suffix="%" /></div>
                 <div className="text-xs text-slate-500">Meer eigen verbruik</div>
-              </div>
-              <div className="rounded-xl border p-4 text-center">
+              </motion.div>
+              <motion.div whileHover={{ y: -3 }} className="rounded-xl border p-4 text-center">
                 <div className="text-3xl font-bold text-emerald-600">2-3 mnd</div>
                 <div className="text-xs text-slate-500">Terugverdientijd</div>
-              </div>
-              <div className="rounded-xl border p-4 text-center">
+              </motion.div>
+              <motion.div whileHover={{ y: -3 }} className="rounded-xl border p-4 text-center">
                 <div className="text-3xl font-bold text-emerald-600">100%</div>
                 <div className="text-xs text-slate-500">Automatisch</div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>

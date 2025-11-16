@@ -36,15 +36,15 @@ const features = [
 
 export default function Features() {
   return (
-    <section id="features" className="py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="features" className="py-24">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto">
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-3xl font-bold text-slate-900"
+            className="text-[32px] font-semibold text-black tracking-tight"
           >
             Alles in één Energy Management System
           </motion.h2>
@@ -53,12 +53,12 @@ export default function Features() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.05, duration: 0.5 }}
-            className="mt-3 text-slate-700"
+            className="mt-3 text-[15px] text-slate-600"
           >
             Koppel en beheer al je apparaten in huis – Solera regelt het automatisch.
           </motion.p>
         </div>
-        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map(({ icon: Icon, title, desc }, i) => (
             <motion.div
               key={title}
@@ -66,20 +66,14 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05, duration: 0.5 }}
-              whileHover={{ y: -4, boxShadow: "0 18px 40px -20px rgba(16,185,129,0.35)" }}
-              className="group relative rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+              whileHover={{ y: -2 }}
+              className="group relative rounded-[20px] border border-slate-200 bg-white p-6 shadow-[0_10px_30px_-20px_rgba(0,0,0,0.25)]"
             >
-              <div className="h-10 w-10 grid place-content-center rounded-lg bg-emerald-100 text-emerald-700">
+              <div className="h-10 w-10 grid place-content-center rounded-xl bg-slate-100 text-black">
                 <Icon className="h-5 w-5" />
               </div>
-              <div className="mt-4 text-lg font-semibold text-slate-900">{title}</div>
-              <p className="mt-1 text-slate-600 text-sm">{desc}</p>
-              <motion.div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 rounded-2xl border border-emerald-200/60"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-              />
+              <div className="mt-4 text-[17px] font-semibold text-black">{title}</div>
+              <p className="mt-1 text-[14px] leading-relaxed text-slate-600">{desc}</p>
             </motion.div>
           ))}
         </div>

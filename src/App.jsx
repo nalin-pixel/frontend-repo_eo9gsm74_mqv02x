@@ -6,7 +6,7 @@ import CTA from './components/CTA'
 
 function App() {
   return (
-    <div className="min-h-screen bg-white text-slate-800">
+    <div className="min-h-screen bg-white text-slate-900 selection:bg-black selection:text-white">
       <Navbar />
       <main>
         <Hero />
@@ -14,13 +14,14 @@ function App() {
         <Savings />
         <CTA />
       </main>
-      <footer className="border-t border-slate-200 py-10 mt-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-slate-600">
-            <span className="font-semibold text-slate-900">Solera</span>
-            <span className="text-sm">© {new Date().getFullYear()}</span>
+      <footer className="border-t border-slate-200/70 py-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 text-sm text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="tracking-tight">© {new Date().getFullYear()} Solera</div>
+          <div className="space-x-6">
+            <a href="#features" className="hover:text-slate-700 transition-colors">Functies</a>
+            <a href="#savings" className="hover:text-slate-700 transition-colors">Besparing</a>
+            <a href="#contact" className="hover:text-slate-700 transition-colors">Contact</a>
           </div>
-          <div className="text-sm text-slate-600">Slim energiebeheer voor thuis</div>
         </div>
       </footer>
     </div>
